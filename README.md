@@ -23,13 +23,19 @@ pip install chromadb anthropic
 
 ## Usage
 
-The repository exposes a convenience executable named `search-logs`. From within the project you wish to search:
+After cloning the repository, install the project in editable mode so the `search-logs` entrypoint is added to your `PATH`:
 
 ```bash
-./search-logs "network debugging"
+pip install -e .
 ```
 
-You can also invoke the module directly:
+You can then invoke the CLI from anywhere:
+
+```bash
+search-logs "network debugging"
+```
+
+Alternatively, you can run the module directly without installing it:
 
 ```bash
 python -m search_logs "network debugging"
