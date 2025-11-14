@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "search-logs"
+version = "0.1.0"
+description = "CLI to search Claude Code session logs"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "chromadb",
+    "anthropic",
+]
+
+[tool.setuptools.packages.find]
+include = ["search_logs"]
+
+[project.scripts]
+search-logs = "search_logs.cli:main"

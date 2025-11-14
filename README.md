@@ -9,35 +9,40 @@ This repository contains a command-line tool that indexes and searches Claude Co
 - Uses Claude embedding vectors (via the `anthropic` Python SDK) for semantic similarity search.
 - Provides a simple CLI to query the index and display matching `leafUuid` identifiers.
 
-## Requirements
-
-- Python 3.10+
-- [`chromadb`](https://docs.trychroma.com/)
-- [`anthropic`](https://docs.anthropic.com/claude/reference/getting-started-with-the-api) (requires an API key via `ANTHROPIC_API_KEY`)
-
-Install the dependencies with:
-
-```bash
-pip install chromadb anthropic
-```
-
 ## Installation
 
-To make the `search-logs` command available from anywhere, copy or symlink the script into a directory that is already on your `PATH` (or add one such directory if it does not exist yet). A common layout on Unix-like systems is `~/.local/bin`:
+### Requirements
+
+- Python 3.10+
+- A shell environment where `~/.local/bin` (or your user-level bin directory) is on `PATH`
+
+All runtime dependencies are declared in the Python package metadata, so the standard Python packaging workflow will install them automatically.
+
+### Installing the CLI for the current user
+
+From a checkout of this repository, install the package in user mode:
 
 ```bash
-mkdir -p ~/.local/bin
-cp ./search-logs ~/.local/bin/
-chmod +x ~/.local/bin/search-logs
+python -m pip install --user .
 ```
 
-Ensure the directory is available on your shell `PATH` (add the following line to your shell profile if necessary):
+The installer creates a `search-logs` executable in your user-level bin directory (typically `~/.local/bin`). Ensure that directory is present on your shell `PATH`—if necessary, add the following line to your shell profile (e.g. `~/.bashrc`, `~/.zshrc`):
 
 ```bash
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
 After reloading your shell configuration, the `search-logs` command can be run from any project directory.
+
+### Alternative: pipx
+
+If you prefer isolation, [`pipx`](https://pypa.github.io/pipx/) can manage a dedicated virtual environment for the CLI:
+
+```bash
+pipx install .
+```
+
+This produces the same `search-logs` command without modifying your base Python environment.
 
 ## Usage
 
